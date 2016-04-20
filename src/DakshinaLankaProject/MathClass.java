@@ -20,7 +20,8 @@ public class MathClass {
     
     static boolean boolInt(int i)
     {
-        if(i==1)return true;
+        if(i==1)return true; //hiiiii
         return false;
     }
+    
 }
