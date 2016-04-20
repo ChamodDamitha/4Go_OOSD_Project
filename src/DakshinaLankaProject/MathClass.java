@@ -11,7 +11,7 @@ package DakshinaLankaProject;
  * @author Chamod
  */
 public class MathClass {
-        ///
+        ///chamod changed
     static int intBool(boolean b)
     {
         if(b)return 1;
