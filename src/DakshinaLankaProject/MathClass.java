@@ -11,7 +11,7 @@ package DakshinaLankaProject;
  * @author Chamod
  */
 public class MathClass {
-        ///chamod changed
+        
     static int intBool(boolean b)
     {
         if(b)return 1;
@@ -20,7 +20,7 @@ public class MathClass {
     
     static boolean boolInt(int i)
     {
-        if(i==1)return true; //hiiiii
+        if(i==1)return true; 
         return false;
     }
     
