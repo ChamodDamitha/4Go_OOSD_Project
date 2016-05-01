@@ -6,7 +6,21 @@ public class OrderHandler
 {
 	private ArrayList<Item> items;
 	private Order order;
+        private Customer customer;
         private OrderDB orderDB=new OrderDB();
+        
+        //when comming through Customer Handler
+        public OrderHandler(Customer customer) {
+            this.customer=customer;
+            new OrderGUI(this).setVisible(true);
+        }
+        
+        //When directly comes to OrderGUI
+        public OrderHandler(int order_id) {
+            loadOrder(order_id);
+            //new OrderGUI(order).setVisible(true);
+        }
+        
         
         
         //////////////how to set date?
@@ -29,9 +43,9 @@ public class OrderHandler
 		
 	}
         */
-	public Order getOrder(int order_id)
+	public void loadOrder(int order_id)
         {
-            return orderDB.getOrder(order_id);
+            this.order=orderDB.getOrder(order_id);
         }
         
         public void updateOrder(Order order)

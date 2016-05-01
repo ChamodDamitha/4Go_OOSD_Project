@@ -24,4 +24,9 @@ public class MathClass {
         return false;
     }
     
+    static boolean boolString(String s)
+    {
+        if(s=="Yes")return true;
+        return false;
+    }
 }

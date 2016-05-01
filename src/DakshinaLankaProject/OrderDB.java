@@ -6,6 +6,10 @@ import javax.swing.JOptionPane;
 public class OrderDB extends DBlocal
 {
     ResultSet res;
+    //DB handlers
+    private CustomerSupplierDB customerDB=new CustomerSupplierDB();
+    private ItemDB itemDB=new ItemDB();
+    private PaymentDB paymentDB=new PaymentDB();
     
         public int getNextIndex() 
 	{
@@ -36,32 +40,9 @@ public class OrderDB extends DBlocal
 	{
 		
 	}
-        ////////////
-        public String getOrderDate(int order_id) throws SQLException
-        {
-            this.connect();
-            String SQL="SELECT startdate FROM Orders WHERE Order_id="+order_id+";";
-            res=this.executeQuery(SQL);
-            res.next();
-            return res.getString("startdate");
-        }
-        public boolean getOrderFinished(int order_id) throws SQLException
-        {
-            this.connect();
-            String SQL="SELECT finished FROM Orders WHERE Order_id="+order_id+";";
-            res=this.executeQuery(SQL);
-            res.next();
-            return MathClass.boolInt(Integer.parseInt(res.getString("finshed")));
-        }
-        public boolean getOrderExpired(int order_id) throws SQLException
-        {
-            this.connect();
-            String SQL="SELECT expired FROM Orders WHERE Order_id="+order_id+";";
-            res=this.executeQuery(SQL);
-            res.next();
-            return MathClass.boolInt(Integer.parseInt(res.getString("expired")));
-        }
-        ///////////////////////////
+        
+        
+        //update a saved order
         public void updateOrder(Order order) 
         {
             this.connect();
@@ -71,6 +52,32 @@ public class OrderDB extends DBlocal
                     order.getCustomer().getCustomer_id()+" WHERE Order_id="+
                     order.getOrder_id()+";";
             this.execute(SQL);
+            
+        }
+        //load a saved order
+        public Order getOrder(int order_id)
+        {
+            try{
+            //connect to database
+            this.connect();
+            String SQL="SELECT * FROM Orders WHERE Order_id="+order_id+";";
+            res=this.executeQuery(SQL);
+            res.next();
+            
+            //create order object
+            Order order=new Order(order_id, customerDB.getCustomerOfOrder(order_id),
+            itemDB.getItemsOfOrder(order_id), res.getString("startdate"));
+            
+            order.setPayments(paymentDB.getPaymentsOfOrder(order_id));
+            order.setFinished(MathClass.boolInt(Integer.parseInt(res.getString("finshed"))));
+            order.setIsExpired(MathClass.boolInt(Integer.parseInt(res.getString("expired"))));
+            return order;
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Database access failed..!");
+                return null;
+            }
             
         }
         

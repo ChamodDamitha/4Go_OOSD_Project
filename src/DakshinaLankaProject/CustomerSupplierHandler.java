@@ -2,6 +2,7 @@ package DakshinaLankaProject;
 
 public class CustomerSupplierHandler
 {
+        private Customer customer;
 	private CustomerSupplierDB customerSupplierDB;
 
 	public final void addCustomer(String name, String address, String telephone)
@@ -13,4 +14,10 @@ public class CustomerSupplierHandler
 	{
 
 	}
+        
+        //connect to order GUI
+        public void addOrder()
+        {
+            new OrderHandler(customer);
+        }
 }
