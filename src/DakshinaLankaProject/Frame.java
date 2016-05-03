@@ -5,6 +5,7 @@ public class Frame extends Item
 	private String frame_name;
 	private String showroom_id;
 	private String frame_type;
+        private boolean isItemRunout=true;
 
     public Frame(String item_id, float buying_price,  float selling_price, Supplier supplier, String manufacturer, int amount,String showroom_id,String frame_name,String frame_type) {
         super(item_id, buying_price,  selling_price, supplier, manufacturer, amount);
@@ -32,6 +33,9 @@ public class Frame extends Item
         return frame_type;
     }
 
+    public boolean getIsItemRunout(){
+        return this.isItemRunout;
+    }
    
 	
 }

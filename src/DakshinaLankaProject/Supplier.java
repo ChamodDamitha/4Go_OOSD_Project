@@ -16,6 +16,26 @@ public class Supplier
         this.telephone = telephone;
         this.address = address;
     }
+
+    public String getSuplier_id() {
+        return suplier_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public ArrayList<Integer> getStockID_list() {
+        return stockID_list;
+    }
         
 
 	public Supplier(int supplier_id)
