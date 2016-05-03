@@ -1,8 +1,9 @@
 package DakshinaLankaProject;
 
 import java.util.*;
+import java.sql.*;
 
-public class StoreDB
+public class StoreDB extends DBlocal
 {
 	public final ArrayList<Item> checkAvailability(String item_id)
 	{
@@ -16,6 +17,8 @@ public class StoreDB
 
 	public final void addToReturenStock(Stock stock)
 	{
+            this.connect();
+            
 		
 	}
 

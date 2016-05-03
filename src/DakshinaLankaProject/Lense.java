@@ -8,8 +8,8 @@ public class Lense extends Item
 	private String sph;
 	private String lense_side;
 
-    public Lense(float buying_price, String item_id, float selling_price, Supplier supplier, String manufacturer, int amount,String lense_type,String cyl,int axis,String sph,String lense_side) {
-        super(buying_price, item_id, selling_price, supplier, manufacturer, amount);
+    public Lense( String item_id,float buying_price, float selling_price, Supplier supplier, String manufacturer, String lense_type,String cyl,int axis,String sph,String lense_side) {
+        super(item_id, buying_price, selling_price, supplier, manufacturer, 1);
         this.lense_type=lense_type;
         this.cyl=cyl;
         this.axis=axis;
