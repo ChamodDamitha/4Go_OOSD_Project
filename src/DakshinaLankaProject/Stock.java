@@ -10,8 +10,16 @@ public class Stock
 	private float totalValue;
 	private String date;
         private int stock_ID;
+
+    public Stock(Supplier supplier, String date, int stock_ID) {
+        this.supplier = supplier;
+        this.date = date;
+        this.stock_ID = stock_ID;
+    }
         
-	public void setSupplier(Supplier supplier){
+    
+        
+    public void setSupplier(Supplier supplier){
             this.supplier=supplier;
         }
 

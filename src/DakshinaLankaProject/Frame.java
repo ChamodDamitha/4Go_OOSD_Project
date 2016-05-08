@@ -7,8 +7,8 @@ public class Frame extends Item
 	private String frame_type;
         private boolean isItemRunout=true;
 
-    public Frame(String item_id, float buying_price,  float selling_price, Supplier supplier, String manufacturer, int amount,String showroom_id,String frame_name,String frame_type) {
-        super(item_id, buying_price,  selling_price, supplier, manufacturer, amount);
+    public Frame(String item_id, float buying_price,  float selling_price,int stockID, String manufacturer, int amount,String showroom_id,String frame_name,String frame_type) {
+        super(item_id, buying_price,  selling_price, stockID, manufacturer, amount);
         this.showroom_id=showroom_id;
         this.frame_name= frame_name;
         this.frame_type=frame_type;
