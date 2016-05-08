@@ -2,9 +2,14 @@ package DakshinaLankaProject;
 
 import java.util.*;
 import java.sql.*;
+import javax.swing.JOptionPane;
+
+
 
 public class StoreDB extends DBlocal
 {
+        ResultSet res;
+        
 	public final ArrayList<Item> checkAvailability(String item_id)
 	{
 		
@@ -14,8 +19,26 @@ public class StoreDB extends DBlocal
 	{
 		
 	}
+        
+        public int getNextIndex(){
+            try {
+            this.connect();
+            String SQL="SELECT MAX(ID) FROM Stocks;";
+            res=this.executeQuery(SQL);
+            res.next();
+            return Integer.valueOf(res.getString("MAX(ID)"))+1;
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Database access  failed");
+        }
+        return 0;
+        }
 
 	public final void addToReturenStock(Stock stock)
+	{
+            
+	}
+
+	public final void addToStock(Stock stock)
 	{
             Frame frame;
             String sql;
@@ -33,11 +56,6 @@ public class StoreDB extends DBlocal
             sql = "INSERT INTO Stocks(ID,supplierID,totalValue) VALUES("+stock.getStockID()+",'"+stock.getSupplier().getSuplier_id()+"',"
                   +","+stock.getTotalValue()+");";
             this.execute(sql);
-	}
-
-	public final void addToStock(Stock stock)
-	{
-		
 	}
 
 	public final int getNextStoreIndex()

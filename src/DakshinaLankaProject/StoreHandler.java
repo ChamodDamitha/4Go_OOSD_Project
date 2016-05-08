@@ -20,10 +20,10 @@ public class StoreHandler
             stock.addToTotal(buying_price);
 	}
 
-	public void setStock(Supplier supplier,int id, String date)
+	public void setStock(Supplier supplier, String date)
 	{
             stock.setSupplier(supplier);
-            stock.setStock_ID(id);
+            stock.setStock_ID(storeDB.getNextIndex());
             stock.setDate(date);
 	}
         
