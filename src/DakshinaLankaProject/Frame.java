@@ -36,6 +36,10 @@ public class Frame extends Item
     public boolean getIsItemRunout(){
         return this.isItemRunout;
     }
+    
+    public void setIsItemRunout(boolean t){
+        isItemRunout = t;
+    }
    
 	
 }

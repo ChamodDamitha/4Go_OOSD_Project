@@ -44,15 +44,10 @@ public class ItemDB extends DBlocal{
             res=this.executeQuery(SQL);
             res.next();
             
-            //create order object ID,buying_price,selling_price,stockID, manufacturer,amount,showroomID,frame_name"
-                  //+ ",frame_type,isItemLow
-            //String item_id, float buying_price,  float selling_price, Supplier supplier, String manufacturer, int amount,String showroom_id,String frame_name,String frame_type
-            Frame frame = new Frame(ID,res.getString("buying_price"),res.getString(selling_price),)
-            
-            order.setPayments(paymentDB.getPaymentsOfOrder(order_id));
-            order.setFinished(MathClass.boolInt(Integer.parseInt(res.getString("finshed"))));
-            order.setIsExpired(MathClass.boolInt(Integer.parseInt(res.getString("expired"))));
-            return order;
+           
+            Frame frame = new Frame(frameID,Float.parseFloat(res.getString("buying_price")),Float.parseFloat(res.getString("selling_price")),Integer.parseInt(res.getString("stockID")),res.getString("manufacturer"),Integer.parseInt(res.getString("amount")),res.getString("shoeroomID"),res.getString("frame_name"),res.getString("frame_type"));
+            frame.setIsItemRunout(MathClass.boolInt(Integer.parseInt(res.getString("isItemLow"))));
+            return frame;
             }
             catch(Exception e)
             {
